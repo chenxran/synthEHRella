@@ -1,4 +1,4 @@
-method: &method corgan
+method: &method medgan
 
 data:
   real_data_icd9_path: &real_data_icd9_path /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/processed_mimic.matrix
@@ -7,7 +7,7 @@ data:
   synthetic_data_type: &synthetic_data_type icd9
 
 generation:
-  # method: *method
+  method: *method
   ckpt_dir: &ckpt_dir /home/chenxran/projects/synthEHRella
   params:
     num_gen_samples: 50000

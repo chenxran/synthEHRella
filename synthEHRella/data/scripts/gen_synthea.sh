@@ -10,8 +10,8 @@ for ARGUMENT in "$@"; do
     VALUE=$(echo $ARGUMENT | cut -f2 -d=)
 
     case "$KEY" in
-        --gen_sample_size) gen_sample_size=${VALUE} ;;
-        --output_dir) output_dir=${VALUE} ;;
+        --num_gen_samples) gen_sample_size=${VALUE} ;;
+        --ckpt_dir) output_dir=${VALUE} ;;
         *) echo "Unknown argument: $KEY" ;;
     esac
 done

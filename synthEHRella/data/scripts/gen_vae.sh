@@ -12,9 +12,9 @@ for ARGUMENT in "$@"; do
     VALUE=$(echo $ARGUMENT | cut -f2 -d=)
 
     case "$KEY" in
+        --num_gen_samples) num_fake_samples=${VALUE} ;;
         --real_data_path) DATASETPATH=${VALUE} ;;
         --ckpt_dir) MODELPATH=${VALUE} ;;
-        --num_gen_samples) num_fake_samples=${VALUE} ;;
         *) echo "Unknown argument: $KEY" ;;
     esac
 done
