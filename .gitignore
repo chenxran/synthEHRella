@@ -1,2 +1,4 @@
-data/methods/*
+synthEHRella/data/methods/synthea
 synthEHRella.code-workspace
+testing_output/
+tests/

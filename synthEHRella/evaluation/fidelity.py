@@ -37,6 +37,13 @@ def compute_correlation(data):
 
     return np.corrcoef(data, rowvar=False)
 
+def coappearance_matrix(data):
+    # Calculate the co-appearance matrix
+    co_matrix = np.dot(data.T, data)
+    assert co_matrix.shape[0] == data.shape[1] and co_matrix.shape[1] == data.shape[1]
+    
+    return co_matrix
+
 def discriminative_score(real_data, synthetic_data, model_type='logistic'):
     """
     Evaluate the ability of a linear model or random forest to discriminate between real and synthetic data.

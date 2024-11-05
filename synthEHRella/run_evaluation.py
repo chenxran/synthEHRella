@@ -1,12 +1,12 @@
 import sys
 import json
+import argparse
 import numpy as np
 from omegaconf import OmegaConf
-from synthEHRella.evaluation.fidelity import discriminative_score, compute_correlation, compute_prevalence
+from synthEHRella.evaluation.fidelity import discriminative_score, compute_correlation, compute_prevalence, coappearance_matrix
 from synthEHRella.evaluation.privacy import membership_inference_attack, attribute_inference_attack
 from synthEHRella.evaluation.utility import trtr, tsrtr, tstr
 from synthEHRella.evaluation.utils import mean_ignore_nan_inf
-from synthEHRella.data.utils import load_real_data, load_synthetic_data
 
 # fidelity evaluation
 def fidelity_evaluation(real_data, synthetic_data):
@@ -21,7 +21,11 @@ def fidelity_evaluation(real_data, synthetic_data):
     real_corr = compute_correlation(real_data.astype(float))
     synthetic_corr = compute_correlation(synthetic_data.astype(float))
     results["corr_fro_dist"] = np.linalg.norm(real_corr - synthetic_corr, 'fro')
-    
+
+    real_coappear = coappearance_matrix(real_data.astype(float))
+    synthetic_coappear = coappearance_matrix(synthetic_data.astype(float))
+    results["coappear_fro_dist"] = np.linalg.norm(real_coappear - synthetic_coappear, 'fro')
+
     score = discriminative_score(real_data, synthetic_data)
     results["discriminative_auc"] = score["auc"]
     results["discriminative_accuracy"] = score["accuracy"]
@@ -70,26 +74,36 @@ def privacy_evaluation(real_data, synthetic_data):
     return results
 
 
-def evaluation(config):
-    real_data = load_real_data(config)
-    synthetic_data = load_synthetic_data(config)
-    
+def evaluation(args):
+    real_data = np.load(args.real_eval_data_path)
+    synthetic_data = np.load(args.synthetic_data_path)
+
     results = {}
-    if config.evaluation.fidelity:
-        results = {**results, **fidelity_evaluation(real_data, synthetic_data)}
-    if config.evaluation.utility:
-        results = {**results, **utility_evaluation(real_data, synthetic_data)}
-    if config.evaluation.privacy:
-        results = {**results, **privacy_evaluation(real_data, synthetic_data)}
+    if args.fidelity:
+        results = {"fidelity": fidelity_evaluation(real_data, synthetic_data)}
+    if args.utility:
+        results = {**results, "utility": utility_evaluation(real_data, synthetic_data)}
+    if args.privacy:
+        results = {**results, "privacy": privacy_evaluation(real_data, synthetic_data)}
     return results
 
 
 def main():
-    config_file = sys.argv[1]
-    config = OmegaConf.load(config_file)
-    results = evaluation(config)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('method', help='The generation method (e.g., cor-gan, plasmode, synthea)')
+    parser.add_argument('--output_dir', default=None, help='Path to the output directory')
+    parser.add_argument('--real_eval_data_path', default=None, help='Path to the real evaluation data')
+    parser.add_argument('--synthetic_data_path', default=None, help='Path to the synthetic data')
+    parser.add_argument('--fidelity', default=True, help='Whether to evaluate fidelity')
+    parser.add_argument('--utility', default=True, help='Whether to evaluate utility')
+    parser.add_argument('--privacy', default=True, help='Whether to evaluate privacy')
+    
+    # Parse arguments
+    args = parser.parse_args()
+
+    results = evaluation(args)
     # save the results as a json file in config.evaluation.output_dir
-    with open(config.evaluation.output_dir, 'w') as f:
+    with open(args.output_dir, 'w') as f:
         json.dump(results, f)
 
 

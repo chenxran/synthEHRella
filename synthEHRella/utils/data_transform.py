@@ -1,3 +1,4 @@
+import os
 import pickle
 import json
 import numpy as np
@@ -8,25 +9,38 @@ import matplotlib.pyplot as plt
 
 class DataTransform(object):
     def __init__(self):
-        with open('ICD9toICD10Mapping.json', 'r') as f:
+        # Getting the base directory (SynthEHRella/synthEHRella) dynamically
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Constructing the full paths to the JSON files
+        icd9toicd10_path = os.path.join(base_dir, 'ICD9toICD10Mapping.json')
+        icd10types_path = os.path.join(base_dir, 'ICD10types.json')
+        icd10_to_phecodex_path = os.path.join(base_dir, 'icd10_to_phecodex_mapping.json')
+        phecodex_types_path = os.path.join(base_dir, 'phecodex_types.json')
+        phecodex_to_phecodexm_path = os.path.join(base_dir, 'phecodex_to_phecodexm_mapping.json')
+        phecodexm_types_path = os.path.join(base_dir, 'phecodexm_types.json')
+        snomed2icd10_path = os.path.join(base_dir, 'snomed2icd10.json')
+
+        # Opening and loading the JSON files
+        with open(icd9toicd10_path, 'r') as f:
             self.icd92icd10 = json.load(f)
         
-        with open('ICD10types.json', 'r') as f:
+        with open(icd10types_path, 'r') as f:
             self.icd10types = json.load(f)
 
-        with open('icd10_to_phecodex_mapping.json') as f:
+        with open(icd10_to_phecodex_path, 'r') as f:
             self.icd10_to_phecodex = json.load(f)
         
-        with open('phecodex_types.json', 'r') as f:
+        with open(phecodex_types_path, 'r') as f:
             self.phecodex_types = json.load(f)
         
-        with open('phecodex_to_phecodexm_mapping.json', 'r') as f:
+        with open(phecodex_to_phecodexm_path, 'r') as f:
             self.phecodex_to_phecodexm = json.load(f)
         
-        with open('phecodexm_types.json', 'r') as f:
+        with open(phecodexm_types_path, 'r') as f:
             self.phecodexm_types = json.load(f)
 
-        with open("snomed2icd10.json", "r") as f:
+        with open(snomed2icd10_path, "r") as f:
             self.snomed2icd10_dict = json.load(f)
 
     def snomedtoicd10(self, data_path='results/synthea-synthetic/csv/conditions.csv'):

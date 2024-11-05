@@ -1,6 +1,3 @@
-# install.packages("readr")
-# install.packages("survival")
-
 library(readr)
 library(survival)
 
@@ -115,15 +112,14 @@ if (length(args) < 3) {
 }
 
 input_data_path <- args[1]
-gen_sample_size <- args[2]
+gen_sample_size <- as.integer(args[2])
 output_data_path <- args[3]
 
-# mimic <- read_csv("data/preprocessed_mimiciii_for_plasmode_with_demo_survival.csv")
-mimic <- read_csv(input_data_path)  # should be something like "data/preprocessed_mimiciii_for_plasmode_with_demo_survival.csv"
+mimic <- read_csv(input_data_path)
 
 variables <- names(mimic)
 event_D_vars <- variables[grep("^event_D_", variables)]
-event_D_vars <- setdiff(event_D_vars, "event_D_")
+mimic$trt <- rbinom(nrow(mimic), 1, 0.5)
 
 rhs <- "GENDER + factor(AGE_GROUP) + factor(MERGED_ETHNICITY)"
 
@@ -139,7 +135,7 @@ for (event_D_var in event_D_vars) {
   ynew <- tryCatch({
     # Attempt the simulation
     hdSimSetup(mimic, idVar = "SUBJECT_ID", outcomeVar = event_D_var, 
-               timeVar = timeVar, treatVar = "event_D_", 
+               timeVar = timeVar, treatVar = "trt", 
                form = rhs, nsim = 1, size = gen_sample_size)
   }, error = function(e) {
     # If an error occurs, print it and return NULL
@@ -149,6 +145,6 @@ for (event_D_var in event_D_vars) {
   # If ynew is not NULL, collect the result
   if (!is.null(ynew)) {
     # results[[event_D_var]] <- ynew
-    write.csv(data.frame(ynew), paste(output_data_path, "/", event_D_var, ".csv"), row.names = FALSE)
+    write.csv(data.frame(ynew), paste(output_data_path, "/", event_D_var, ".csv", sep = ""), row.names = FALSE)
   }
 }
