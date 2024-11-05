@@ -3,9 +3,9 @@
 ## Package Overview
 
 ```
-SynthEHRella/
+synthEHRella/
 │
-├── SynthEHRella/
+├── synthEHRella/
 │   ├── __init__.py              
 │   ├── data/
 |   |   ├── methods/
@@ -65,7 +65,7 @@ Before installing the package, make sure you have the following dependencies ins
 conda env create -f environment.yaml
 ```
 
-To install the package, run the following command:
+To install the `synthEHRella` package, run the following command:
 
 ```bash
 pip install .
