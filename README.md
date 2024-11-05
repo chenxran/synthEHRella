@@ -1,11 +1,5 @@
 # SynthEHRella: A Python Package for Synthetic Electronic Health Records (EHR) Data Generation Benchmarking
 
-**Maintainer**: Xingran Chen (chenxran@umich.edu), Department of Biostatistics, University of Michigan, Ann Arbor
-
-|       | Citation     |
-| -------------  | -------------  | 
-| systematic review paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2024+). Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
-
 ## Package Overview
 
 ```
@@ -214,4 +208,12 @@ SynthEHRella is licensed under the MIT License. See LICENSE for more information
 ## Acknowledgments
 
 This work was supported through grant DMS1712933 from the National Science Foundation and MI-CARES grant 1UG3CA267907 from the National Cancer Institute. The funders had no role in the design of the study; collection, analysis, or interpretation of the data; writing of the report; or the decision to submit the manuscript for publication.
+
+## Cite
+
+**Maintainer**: Xingran Chen (chenxran@umich.edu), Department of Biostatistics, University of Michigan, Ann Arbor
+
+|       | Citation     |
+| -------------  | -------------  | 
+| systematic review paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2024+). Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
 
