@@ -13,11 +13,6 @@ SynthEHRella/
 │   |   |   ├── plasmode
 │   |   |   ├── synthea
 │   |   |   └── ...
-│   |   ├── scripts/
-│   |   |   ├── gen_corgan.sh
-│   |   |   ├── gen_plasmode.sh
-│   |   |   ├── gen_synthea.sh
-│   |   |   └── ...
 │   │   ├── __init__.py
 │   │   ├── data_generator.py
 │   │   ├── utils.py    
@@ -25,17 +20,19 @@ SynthEHRella/
 │   │   ├── __init__.py          
 │   │   ├── fidelity.py
 │   │   ├── utility.py
-│   │   ├── privacy.py
-│   ├── config/
+│   │   └── privacy.py
+│   ├── utils/
 │   │   ├── __init__.py
-│   │   └── config_loader.py
+│   │   ├── data_transform.py
+│   │   └── ... (mapping files)
 │   ├── run_generation.py           
 │   ├── run_evaluation.py
-│   └── real_data_preprocessing.py
-├── tests/
+│   ├── run_postprocessing.py
+│   └── run_preprocessing.py
 ├── setup.py
+├── LICENSE
 ├── README.md
-└── requirements.txt
+└── environmental.yaml
 ```
 
 
