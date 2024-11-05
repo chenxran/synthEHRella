@@ -5,7 +5,7 @@ setup(
     version="0.1.0",  # Initial version
     author="Xingran Chen, Zhenke Wu, Xu Shi, Hyunghoon Cho, Bhramar Mukherjee",  # Your name or organization
     author_email="chenxran@umich.edu",  # Your contact email
-    description="A benchmarking package for synthetic EHR data generation and evaluation",
+    description="SynthEHRella: A Package for Synthetic EHR Data Generation Benchmarking",
     long_description=open('README.md').read(),  # This will be the content of your README file
     long_description_content_type='text/markdown',  # Format of README (can be text/plain or text/markdown)
     url="https://github.com/chenxran/SynthEHRella",  # URL to the project (GitHub link, for example)
