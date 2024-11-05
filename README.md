@@ -4,7 +4,7 @@
 
 |       | Citation     |
 | -------------  | -------------  | 
-| systematic review paper | Chen X, Wu Z*, Xu S, Cho H, Mukherjee B $^\dagger$ (2024+). Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
+| systematic review paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2024+). Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
 
 ## Package Overview
 
