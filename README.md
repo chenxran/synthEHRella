@@ -1,4 +1,10 @@
-# SynthEHRella: A Package for Synthetic EHR Data Generation Benchmarking
+# SynthEHRella: A Python Package for Synthetic Electronic Health Records (EHR) Data Generation Benchmarking
+
+**Maintainer**: Xingran Chen (chenxran@umich.edu), Department of Biostatistics, University of Michigan, Ann Arbor
+
+|       | Citation     |
+| -------------  | -------------  | 
+| systematic review paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2024+). Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
 
 ## Package Overview
 
@@ -39,6 +45,7 @@ SynthEHRella/
 ```
 
 
+
 ## Preliminary
 
 You should have the following files before installing the package. 
@@ -57,7 +64,7 @@ After obtaining the data, you can preprocess it for use with SynthEHRella. Note 
 
 NOTE: Synthea software is optional and only required if you want to generate synthetic data using Synthea. 
 
-Synthea is an open-source synthetic EHR data generation methods that generates synthetic data by simulating the history of synthetic patients. You can download the software from their [Github Repository](https://github.com/synthetichealth/synthea/releases). The file you need to download is called `synthea-with-dependencies.jar`. After obtaining the software, you could place it in the `synthEHRella/synthEHRella/data/methods/synthea` folder.
+Synthea is an open-source synthetic EHR data generation method that generates synthetic data by simulating the history of synthetic patients. You can download the software from their [Github Repository](https://github.com/synthetichealth/synthea/releases). The file you need to download is called `synthea-with-dependencies.jar`. After obtaining the software, you could place it in the `synthEHRella/synthEHRella/data/methods/synthea` folder.
 
 ## Installation
 
@@ -198,7 +205,7 @@ Arguments:
 
 ## Contributing
 
-SynthEHRella is designed to be a **open-source** benchmark for synthetic EHR generation methods. We welcome all kinds of suggestions, and contributions! Please feel free to open an issue or submit a pull request.
+SynthEHRella is designed to be an **open-source** benchmark for synthetic EHR generation methods. We welcome all kinds of suggestions, and contributions! Please feel free to open an issue or submit a pull request.
 
 ## License
 
