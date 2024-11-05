@@ -1,0 +1,7 @@
+wget
+tqdm
+dill
+numpy
+tokenizers>=0.12.1
+torch>=1.11.0
+transformers>=4.19.0

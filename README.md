@@ -56,6 +56,10 @@ pip install .
 
 ## Usage
 
+### Obtain MIMIC-III/IV Data
+
+MIMIC-III and MIMIC-IV data are open-source and can be obtained by requesting via \url{https://physionet.org/content/mimiciii/1.4/} and \url{https://physionet.org/content/mimiciv/3.1/}. After obtaining the data, you can preprocess the data using the following steps.
+
 ### Preprocessing Real EHR Data
 
 To preprocess real EHR data, run the following command:
