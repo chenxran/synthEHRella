@@ -1,4 +1,4 @@
-# SynthEHRella: Synthetic Electronic Health Record Benchmarking
+# SynthEHRella: A Package for Synthetic EHR Data Generation Benchmarking
 
 ## Package Overview
 
