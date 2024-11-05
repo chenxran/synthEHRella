@@ -8,7 +8,7 @@ setup(
     description="SynthEHRella: A Package for Synthetic EHR Data Generation Benchmarking",
     long_description=open('README.md').read(),  # This will be the content of your README file
     long_description_content_type='text/markdown',  # Format of README (can be text/plain or text/markdown)
-    url="https://github.com/chenxran/SynthEHRella",  # URL to the project (GitHub link, for example)
+    url="https://github.com/chenxran/synthEHRella",  # URL to the project (GitHub link, for example)
     packages=find_packages(),  # Automatically find all the packages in your project
     install_requires=[
         'pandas',       # Example dependencies, you can list more as needed
