@@ -39,6 +39,20 @@ SynthEHRella/
 ```
 
 
+## Preliminary
+
+You should have the following files before installing the package. 
+
+### Obtain MIMIC-III/IV Data
+
+MIMIC-III and MIMIC-IV data are open source and available through PhysioNet. Request access here: [MIMIC-III v1.4](https://physionet.org/content/mimiciii/1.4/), [MIMIC-IV v3.1](https://physionet.org/content/mimiciv/3.1/). After obtaining the data, you can preprocess it for use with SynthEHRella. Note that in the paper, we used MIMIC-III v1.4 and MIMIC-IV v2.2 for the evaluation.
+
+### (Optional) Obtain Synthea Software
+
+NOTE: Synthea software is optional and only required if you want to generate synthetic data using Synthea. 
+
+Synthea is an open-source synthetic EHR data generation methods that generates synthetic data by simulating the history of synthetic patients. You can download the software from their [Github Repository](https://github.com/synthetichealth/synthea/releases). The file you need to download is called `synthea-with-dependencies.jar`. After obtaining the software, you could place it in the `synthEHRella/synthEHRella/data/methods/synthea` folder.
+
 ## Installation
 
 Before installing the package, make sure you have the following dependencies installed:
@@ -53,12 +67,7 @@ To install the package, run the following command:
 pip install .
 ```
 
-
 ## Usage
-
-### Obtain MIMIC-III/IV Data
-
-MIMIC-III and MIMIC-IV data are open-source and can be obtained by requesting via \url{https://physionet.org/content/mimiciii/1.4/} and \url{https://physionet.org/content/mimiciv/3.1/}. After obtaining the data, you can preprocess the data using the following steps.
 
 ### Preprocessing Real EHR Data
 
