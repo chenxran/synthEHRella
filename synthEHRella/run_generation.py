@@ -3,7 +3,6 @@ import os
 import argparse
 import subprocess
 from omegaconf import OmegaConf
-from synthEHRella.data.data_generator import DataGenerator
 import pickle
 import numpy as np
 
@@ -69,13 +68,6 @@ def main():
     if args.method not in ['resample', 'prevalence-based-random']:
         command_list = []
         if args.method == 'corgan':
-            # COMMAND="python /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/cor-gan/Generative/corGAN/pytorch/CNN/MIMIC/wgancnnmimic.py"
-            # COMMAND+=" --DATASETPATH $DATASETPATH"
-            # COMMAND+=" --expPATH $expPATH"
-            # COMMAND+=" --gen_sample_size $gen_sample_size"
-            # COMMAND+=" --training $training"
-            # COMMAND+=" --generate $generate"
-            # write based on the above command
             command = f"python {base_dir}/data/methods/cor-gan/Generative/corGAN/pytorch/CNN/MIMIC/wgancnnmimic.py"
             command += f" --DATASETPATH {args.real_training_data_path}"
             command += f" --expPATH {args.ckpt_dir}"
@@ -87,11 +79,6 @@ def main():
             command_list.append(command.split())
         
         elif args.method == 'medgan':
-            # COMMAND="python /home/chenxran/projects/synthEHRella/synthEHRella/data/methods/cor-gan/Generative/medGAN/MIMIC/pytorch/MLP/medGAN.py"
-            # COMMAND+=" --DATASETPATH $DATASETPATH"
-            # COMMAND+=" --PATH $PATH"
-            # COMMAND+=" --num_fake_samples $num_fake_samples"
-            # COMMAND+=" --training $training"
             command = f"python {base_dir}/data/methods/cor-gan/Generative/medGAN/MIMIC/pytorch/MLP/medGAN.py"
             command += f" --DATASETPATH {args.real_training_data_path}"
             command += f" --PATH {args.ckpt_dir}"
@@ -103,9 +90,6 @@ def main():
             command_list.append(command.split())
         
         elif args.method == 'plasmode':
-            # Construct the Java command dynamically
-            # COMMAND="Rscript plasmode.R"
-            # COMMAND+=" $real_data_path $gen_sample_size $output_dir"
             command = f"Rscript {base_dir}/data/methods/plasmode/plasmode.R"
             command += f" {args.real_training_data_path} {args.num_gen_samples} {args.ckpt_dir}"
             if args.params is not None:
@@ -113,10 +97,6 @@ def main():
             command_list.append(command.split())
         
         elif args.method == 'ehrdiff':
-            # COMMAND="python /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/EHRDiff/main.py"
-            # COMMAND+=" --mode train --config /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/EHRDiff/configs/mimic/train_edm.yaml"
-            # COMMAND+=" --workdir $workdir"
-            # COMMAND+=" data.path $DATASETPATH"
             command = f"python {base_dir}/data/methods/EHRDiff/main.py"
             command += f" --mode train --config {base_dir}/data/methods/EHRDiff/configs/mimic/train_edm.yaml"
             command += f" --workdir {args.ckpt_dir}"
@@ -125,11 +105,6 @@ def main():
             command += f" data.path={args.real_training_data_path}"
             
             command_list.append(command.split())
-            
-            # COMMAND="python /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/EHRDiff/main.py"
-            # COMMAND+=" --mode eval --config /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/EHRDiff/configs/mimic/sample_edm.yaml"
-            # COMMAND+=" --workdir $workdir"
-            # COMMAND+=" test.n_samples $gen_sample_size"
             command = f"python {base_dir}/data/methods/EHRDiff/main.py"
             command += f" --mode eval --config {base_dir}/data/methods/EHRDiff/configs/mimic/sample_edm.yaml"
             command += f" --workdir {args.ckpt_dir}"
@@ -138,10 +113,6 @@ def main():
             command_list.append(command.split())
             
         elif args.method == 'synthea':
-            # COMMAND="java -jar synthea-with-dependencies.jar"
-            # COMMAND+=" -p $gen_sample_size"
-            # COMMAND+=" --exporter.csv.export=true"
-            # COMMAND+=" --exporter.baseDirectory=$output_dir"
             command = f"java -jar {base_dir}/data/methods/synthea/synthea-with-dependencies.jar"
             command += f" -p {args.num_gen_samples}"
             command += f" --exporter.csv.export=true"
@@ -152,10 +123,6 @@ def main():
             command_list.append(command.split())
             
         elif args.method == 'promptehr':
-            # Construct the Python command dynamically
-            # COMMAND="python /nfs/turbo/sph-zhenkewu/chenxran/synthEHRella/synthEHRella/data/methods/PromptEHR/gen_promptEHR.py"
-            # COMMAND+=" --num_gen_samples $gen_sample_size"
-            # COMMAND+=" --save_path $save_path"
             command = f"python {base_dir}/data/methods/PromptEHR/gen_promptEHR.py"
             command += f" --num_gen_samples {args.num_gen_samples}"
             command += f" --save_path {args.ckpt_dir}"
@@ -165,11 +132,6 @@ def main():
             command_list.append(command.split())
         
         elif args.method == 'vae':
-            # COMMAND="python /home/chenxran/projects/synthEHRella/synthEHRella/data/methods/cor-gan/Generative/VAE/MIMIC/vaeConvolutional.py"
-            # COMMAND+=" --DATASETPATH $DATASETPATH"
-            # COMMAND+=" --MODELPATH $MODELPATH"
-            # COMMAND+=" --num_fake_samples $num_fake_samples"
-            # COMMAND+=" --train $train"
             command = f"python {base_dir}/data/methods/cor-gan/Generative/VAE/MIMIC/vaeConvolutional.py"
             command += f" --DATASETPATH {args.real_training_data_path}"
             command += f" --MODELPATH {args.ckpt_dir}"

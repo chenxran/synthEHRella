@@ -11,7 +11,7 @@ data:
   resolution: 1782
   n_classes: None
 model:
-  ckpt: "/scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/results/EHRDiff/checkpoints/final_checkpoint.pth"
+  ckpt: "EHRDiff/checkpoints/final_checkpoint.pth"
   denoiser_name: edm
   denoiser_network: song
   ema_rate: .999

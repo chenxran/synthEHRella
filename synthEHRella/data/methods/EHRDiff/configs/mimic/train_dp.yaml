@@ -8,7 +8,7 @@ setup:
   master_port: 60202
   omp_n_threads: 64
 data:
-  path: "/scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/MIMIC/X_num_train.npy"
+  path: "X_num_train.npy"
   name: mimic
   resolution: 1782
   dataloader_params:

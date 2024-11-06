@@ -29,11 +29,11 @@ def convert_to_3digit_icd9(dxStr):
 
 Adjust the data path and parameter setting in the corresponding config file and then start training by:
 ```bash
-python main.py --mode train --workdir /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/results/EHRDiff --config /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/src/EHRDiff/configs/mimic/train_edm.yaml
+python main.py --mode train --workdir <workdir> --config EHRDiff/configs/mimic/train_edm.yaml
 ```
 Adjust the checkpoint path and parameter setting and then you can do sampling by running:
 ```bash
-python main.py --mode eval --workdir /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/results/EHRDiff --config /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/src/EHRDiff/configs/mimic/sample_edm.yaml
+python main.py --mode eval --workdir <workdir> --config EHRDiff/configs/mimic/sample_edm.yaml
 ```
 
 Note that we modify the code from the DPDM repo, with which we attempt to equip the model with the ability of differential privacy. In our preliminary experiments, we found it to be effective for the CinC dataset, while it is hard to adjust for MIMIC data which may be due to the high-dimension problem commonly concerned with differential privacy.

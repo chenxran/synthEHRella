@@ -12,7 +12,7 @@ if __name__ == "__main__":
     # setup argument
     parser = argparse.ArgumentParser(description='Generate synthetic data using PromptEHR')
     parser.add_argument('--num_gen_samples', type=int, default=50000, help='Number of fake samples to generate')
-    parser.add_argument('--save_path', type=str, default='/scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/', help='Path to save the generated data')
+    parser.add_argument('--save_path', type=str, default=None, help='Path to save the generated data')
     
     args = parser.parse_args()
 
@@ -53,8 +53,7 @@ if __name__ == "__main__":
         diags.append(diag)
 
     # save diags
-    # load /scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/processed_mimic.types
-    with open('/scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/processed_mimic.types', 'rb') as f:
+    with open('processed_mimic3.types', 'rb') as f:
         types = pickle.load(f)
 
     def convert_to_3digit_icd9(dxStr):  # merge into broader category (because the last two digits generally have no use.)
@@ -76,5 +75,4 @@ if __name__ == "__main__":
     # save data
     # np.save(args.save_path, data)
     np.save(os.path.join(args.save_path, "promptehr-synthetic.npy"), data)
-    # np.save(f'/scratch/zhenkewu_root/zhenkewu1/chenxran/syntheticEHR/promptEHR_gen_data_sample_{len(diags)}.npy', data)
     print("Finished.")
