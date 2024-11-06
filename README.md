@@ -1,5 +1,7 @@
 # SynthEHRella
 
+A Python package for synthetic Electronic Health Records (EHR) data generation benchmarking.
+
 ## Package Overview
 
 ```
