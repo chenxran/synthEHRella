@@ -6,7 +6,7 @@ A Python package for synthetic Electronic Health Records (EHR) data generation b
 
 |       | Citation     |
 | -------------  | -------------  | 
-| systematic review paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2024+). [Generating Synthetic Electronic Health Record (EHR) Data: A Systematic Review and Benchmarking](https://arxiv.org/abs/2411.04281v1). [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
+| paper | Chen X, Wu Z*, Shi X, Cho H, Mukherjee B $^\dagger$ (2025). [Generating synthetic electronic health record data: a methodological scoping review with benchmarking on phenotype data and open-source software](https://doi.org/10.1093/jamia/ocaf082). *Journal of the American Medical Informatics Association*, Volume 32, Issue 7, July 2025, Pages 1227–1240. [*: correspdonding author (zhenkewu@umich.edu); $^\dagger$: senior author (bhramar.mukherjee@yale.edu)].      |
 
 ## Package Overview
 
