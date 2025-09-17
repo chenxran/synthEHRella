@@ -13,8 +13,6 @@ setup(
     install_requires=[
         'pandas',
         'numpy',
-        'tqdm',
-        'pickle',
     ],
     # classifiers=[
     #     'Programming Language :: Python :: 3',
