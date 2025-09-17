@@ -65,7 +65,7 @@ def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     # config = OmegaConf.load(f"{base_dir}/config/{args.method}.yaml")
 
-    if args.method not in ['resample', 'prevalence-based-random']:
+    if args.method not in ['resample', 'pbr']:
         command_list = []
         if args.method == 'corgan':
             command = f"python {base_dir}/data/methods/cor-gan/Generative/corGAN/pytorch/CNN/MIMIC/wgancnnmimic.py"
@@ -141,6 +141,8 @@ def main():
             command += " --train True"
             
             command_list.append(command.split())
+        else:
+            raise ValueError("Unrecognized method.")
         
         try:
             for command in command_list:
@@ -158,7 +160,10 @@ def main():
             matrix = random_sample_from_data(real_data, args.num_gen_samples)
         elif args.method == 'pbr':
             matrix = randomly_generate_data(real_data, args.num_gen_samples)
+        else:
+            raise ValueError("Unrecognized method.")
 
+        print(f"Synthetic data generated successfully.")
         # avoid prevalence = 0
         for i in range(matrix.shape[1]):
             if np.all(matrix[:, i] == 0) or np.all(matrix[:, i] == 1):
